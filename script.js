@@ -44,22 +44,24 @@ const CheckWin = () => {
         "Congratulations!!\n" + grids[e[0]].innerText + " WON";
       isgameOver = true;
       document.getElementById("image-box").style.display = "block";
-
-
-      if (e[5] !== 0 && e[5] !== 90) {
-        if (window.innerWidth > 800) {
-          document.querySelector(".line").style.width = "30vw";
-          document.querySelector(".line").style.transform = `translate(${e[3]}vw , ${e[4]}vw) rotate(${e[5]}deg)`;
-          } else {
-            document.querySelector(".line").style.width = "60vw";
-            document.querySelector(".line").style.transform = `translate(${e[3]*2}vw , ${e[4]*2}vw) rotate(${e[5]}deg)`;
-        }
-      }else{
-        document.querySelector(".line").style.transform = `translate(${e[3]}vw , ${e[4]}vw) rotate(${e[5]}deg)`;
-      }
-
-
-      document.querySelector(".line").style.display="block";
+      
+          if(window.innerWidth>800){
+            if (e[5] !== 0 && e[5] !== 90) {
+              document.querySelector(".line").style.width="30vw";
+              document.querySelector(".line").style.transform = `translate(${e[3]}vw , ${e[4]}vw) rotate(${e[5]}deg)`;
+            }else{
+              document.querySelector(".line").style.width = "20vw";
+              document.querySelector(".line").style.transform = `translate(${e[3]}vw , ${e[4]}vw) rotate(${e[5]}deg)`;
+            }
+          }else{
+            if (e[5] !== 0 && e[5] !== 90) {
+              document.querySelector(".line").style.width="60vw";
+              document.querySelector(".line").style.transform = `translate(${e[3]*2}vw , ${e[4]*2}vw) rotate(${e[5]}deg)`;
+            }else{
+              document.querySelector(".line").style.width = "40vw";
+              document.querySelector(".line").style.transform = `translate(${e[3]*2}vw , ${e[4]*2}vw) rotate(${e[5]}deg)`;
+            }
+          }
     }
   });
 };
@@ -89,5 +91,5 @@ document.getElementById("reset").addEventListener("click", () => {
   isgameOver = false;
   document.getElementById("game-info").innerText = `Turn for ${turn}`;
   document.getElementById("image-box").style.display = "none";
-  document.querySelector(".line").style.display="none";
+  document.querySelector(".line").style.width="0px";
 });
